@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.FeedbackList;
+package app.managementapp.college.com.collegemanagement.api.FeedbackList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -11,6 +11,17 @@ import java.util.Map;
 
 public class FeedbackListResponse implements Parcelable{
 
+    public static final Creator<FeedbackListResponse> CREATOR = new Creator<FeedbackListResponse>() {
+        @Override
+        public FeedbackListResponse createFromParcel(Parcel in) {
+            return new FeedbackListResponse(in);
+        }
+
+        @Override
+        public FeedbackListResponse[] newArray(int size) {
+            return new FeedbackListResponse[size];
+        }
+    };
     private List<DataList> dataList = new ArrayList<DataList>();
     private Object errorMessage;
     private String extendedToken;
@@ -32,18 +43,6 @@ public class FeedbackListResponse implements Parcelable{
     public int describeContents() {
         return 0;
     }
-
-    public static final Creator<FeedbackListResponse> CREATOR = new Creator<FeedbackListResponse>() {
-        @Override
-        public FeedbackListResponse createFromParcel(Parcel in) {
-            return new FeedbackListResponse(in);
-        }
-
-        @Override
-        public FeedbackListResponse[] newArray(int size) {
-            return new FeedbackListResponse[size];
-        }
-    };
 
     /**
      * 

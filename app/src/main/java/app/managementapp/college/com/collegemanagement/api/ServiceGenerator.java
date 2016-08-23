@@ -1,10 +1,10 @@
-package app.managementapp.college.com.collegemanagement.api.;
+package app.managementapp.college.com.collegemanagement.api;
 
 import com.google.gson.GsonBuilder;
 
 import okhttp3.OkHttpClient;
-import retrofit2.GsonConverterFactory;
 import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by Sri Harrsha

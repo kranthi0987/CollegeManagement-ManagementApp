@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
+package app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +9,17 @@ import java.util.Map;
 
 public class Address implements Parcelable{
 
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
     private String address;
     private Object addressType;
     private String city;
@@ -24,18 +35,6 @@ public class Address implements Parcelable{
         country = in.readString();
         state = in.readString();
     }
-
-    public static final Creator<Address> CREATOR = new Creator<Address>() {
-        @Override
-        public Address createFromParcel(Parcel in) {
-            return new Address(in);
-        }
-
-        @Override
-        public Address[] newArray(int size) {
-            return new Address[size];
-        }
-    };
 
     /**
      * 

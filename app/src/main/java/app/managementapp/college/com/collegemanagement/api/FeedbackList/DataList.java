@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.FeedbackList;
+package app.managementapp.college.com.collegemanagement.api.FeedbackList;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +9,17 @@ import java.util.Map;
 
 public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     private String date;
     private String feedbackPerson;
     private Object fileContent;
@@ -50,18 +61,6 @@ public class DataList implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
-    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
-        @Override
-        public DataList createFromParcel(Parcel in) {
-            return new DataList(in);
-        }
-
-        @Override
-        public DataList[] newArray(int size) {
-            return new DataList[size];
-        }
-    };
 
     /**
      * 
@@ -270,6 +269,13 @@ public class DataList implements Parcelable {
         return userType;
     }
 
+    /**
+     * @param userType The UserType
+     */
+    public void setUserType(String userType) {
+        this.userType = userType;
+    }
+
     @Override
     public String toString() {
         return "DataList{" +
@@ -287,15 +293,6 @@ public class DataList implements Parcelable {
                 ", userType='" + userType + '\'' +
                 ", additionalProperties=" + additionalProperties +
                 '}';
-    }
-
-    /**
-     * 
-     * @param userType
-     *     The UserType
-     */
-    public void setUserType(String userType) {
-        this.userType = userType;
     }
 
     public Map<String, Object> getAdditionalProperties() {

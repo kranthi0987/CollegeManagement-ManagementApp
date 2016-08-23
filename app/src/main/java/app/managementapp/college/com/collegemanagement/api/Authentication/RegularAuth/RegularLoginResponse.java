@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth;
+package app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,6 +9,17 @@ import java.util.Map;
 
 public class RegularLoginResponse implements Parcelable {
 
+    public static final Creator<RegularLoginResponse> CREATOR = new Creator<RegularLoginResponse>() {
+        @Override
+        public RegularLoginResponse createFromParcel(Parcel in) {
+            return new RegularLoginResponse(in);
+        }
+
+        @Override
+        public RegularLoginResponse[] newArray(int size) {
+            return new RegularLoginResponse[size];
+        }
+    };
     private Integer authenticationResult;
     private Integer serviceResult;
     private String token;
@@ -27,18 +38,6 @@ public class RegularLoginResponse implements Parcelable {
     public int describeContents() {
         return 0;
     }
-
-    public static final Creator<RegularLoginResponse> CREATOR = new Creator<RegularLoginResponse>() {
-        @Override
-        public RegularLoginResponse createFromParcel(Parcel in) {
-            return new RegularLoginResponse(in);
-        }
-
-        @Override
-        public RegularLoginResponse[] newArray(int size) {
-            return new RegularLoginResponse[size];
-        }
-    };
 
     /**
      * 
@@ -85,6 +84,13 @@ public class RegularLoginResponse implements Parcelable {
         return token;
     }
 
+    /**
+     * @param token The Token
+     */
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -106,16 +112,6 @@ public class RegularLoginResponse implements Parcelable {
         result = 31 * result + token.hashCode();
         result = 31 * result + additionalProperties.hashCode();
         return result;
-    }
-
-    /**
-     * 
-     * @param token
-
-     *     The Token
-     */
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public Map<String, Object> getAdditionalProperties() {

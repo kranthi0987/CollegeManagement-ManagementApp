@@ -1,5 +1,5 @@
 
-package app.managementapp.college.com.collegemanagement.api.;
+package app.managementapp.college.com.collegemanagement.api;
 
 import java.util.HashMap;
 import java.util.Map;

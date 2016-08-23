@@ -1,10 +1,7 @@
-package app.managementapp.college.com.collegemanagement.api.;
+package app.managementapp.college.com.collegemanagement.api;
 
 
-import app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth.FirstLoginResponse;
-import app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
-import app.managementapp.college.app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
-import app.managementapp.college.app.managementapp.college.com.collegemanagement.api.FeedbackReply.FeedbackReplyRequest;
+import app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -21,13 +18,13 @@ public interface CollegeManagementApiService {
     Call<FeedbackListResponse> getFeedbackList(@Header("Token") String token, @Query("Type") Integer type);
 
     @POST("ManagementService.svc/UpdateGeneralFeedbackAndComplaints")
-    Call<FeedbackListResponse> giveReplyForFeedback(@Header("Token") String token, @Body FeedbackReplyRequest requestObject);
+    Call<FeedbackListResponse> giveReplyForFeedback(@Header("Token") String token, @Body app.managementapp.college.com.collegemanagement.api.FeedbackReply.FeedbackReplyRequest requestObject);
 
     @POST("authenticationService.svc/AuthenticateRequestForFirstLogin")
-    Call<FirstLoginResponse> doFirstLogin(@Query("username") String username, @Query("Password") String password);
+    Call<app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth.FirstLoginResponse> doFirstLogin(@Query("username") String username, @Query("Password") String password);
 
     @POST("AuthenticationService.svc/AuthenticateRequest")
-    Call<RegularLoginResponse> doRegularLogin(@Query("username") String username, @Query("Password") String password);
+    Call<app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse> doRegularLogin(@Query("username") String username, @Query("Password") String password);
 
 
 }
