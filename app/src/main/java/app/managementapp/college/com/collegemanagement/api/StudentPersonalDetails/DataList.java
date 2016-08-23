@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.StudentPersonalDetails;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Addressal")
     @Expose
     private Object addressal;
@@ -128,6 +142,68 @@ public class DataList {
     @SerializedName("isGrade")
     @Expose
     private Integer isGrade;
+
+    protected DataList(Parcel in) {
+        dateOfBirth = in.readString();
+        firstName = in.readString();
+        fullName = in.readString();
+        gender = in.readString();
+        lastName = in.readString();
+        mGUID = in.readString();
+        middleName = in.readString();
+        admissionYear = in.readString();
+        applicationNo = in.readString();
+        branchName = in.readString();
+        college = in.readParcelable(College.class.getClassLoader());
+        communicationAddress = in.readParcelable(CommunicationAddress.class.getClassLoader());
+        courseName = in.readString();
+        email = in.readString();
+        fathersName = in.readString();
+        mobile = in.readString();
+        mothersName = in.readString();
+        regNomenclature = in.readString();
+        registrationNo = in.readString();
+        semester = in.readString();
+        status = in.readString();
+        syllabusYear = in.readString();
+        termNomenclature = in.readString();
+        universityAddress = in.readString();
+        universityName = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(dateOfBirth);
+        dest.writeString(firstName);
+        dest.writeString(fullName);
+        dest.writeString(gender);
+        dest.writeString(lastName);
+        dest.writeString(mGUID);
+        dest.writeString(middleName);
+        dest.writeString(admissionYear);
+        dest.writeString(applicationNo);
+        dest.writeString(branchName);
+        dest.writeParcelable(college, flags);
+        dest.writeParcelable(communicationAddress, flags);
+        dest.writeString(courseName);
+        dest.writeString(email);
+        dest.writeString(fathersName);
+        dest.writeString(mobile);
+        dest.writeString(mothersName);
+        dest.writeString(regNomenclature);
+        dest.writeString(registrationNo);
+        dest.writeString(semester);
+        dest.writeString(status);
+        dest.writeString(syllabusYear);
+        dest.writeString(termNomenclature);
+        dest.writeString(universityAddress);
+        dest.writeString(universityName);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * 

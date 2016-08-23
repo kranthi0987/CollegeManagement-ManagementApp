@@ -1,11 +1,25 @@
 
 package app.managementapp.college.com.collegemanagement.api.Profiles.College;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class DepartmentList {
+public class DepartmentList implements Parcelable {
 
+    public static final Creator<DepartmentList> CREATOR = new Creator<DepartmentList>() {
+        @Override
+        public DepartmentList createFromParcel(Parcel in) {
+            return new DepartmentList(in);
+        }
+
+        @Override
+        public DepartmentList[] newArray(int size) {
+            return new DepartmentList[size];
+        }
+    };
     private Integer departmentHODID;
     private Integer departmentID;
     private String departmentName;
@@ -14,6 +28,14 @@ public class DepartmentList {
     private String mGUID;
     private String qualification;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected DepartmentList(Parcel in) {
+        departmentName = in.readString();
+        hODName = in.readString();
+        hODPhone = in.readString();
+        mGUID = in.readString();
+        qualification = in.readString();
+    }
 
     /**
      * 
@@ -149,4 +171,17 @@ public class DepartmentList {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(departmentName);
+        dest.writeString(hODName);
+        dest.writeString(hODPhone);
+        dest.writeString(mGUID);
+        dest.writeString(qualification);
+    }
 }

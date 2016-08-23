@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.StaffLoginAbsenteesSummary;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Absentees")
     @Expose
     private Integer absentees;
@@ -32,6 +46,11 @@ public class DataList {
     @SerializedName("Present")
     @Expose
     private Integer present;
+
+    protected DataList(Parcel in) {
+        category = in.readString();
+        categoryID = in.readString();
+    }
 
     /**
      * 
@@ -177,4 +196,14 @@ public class DataList {
         this.present = present;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(category);
+        dest.writeString(categoryID);
+    }
 }

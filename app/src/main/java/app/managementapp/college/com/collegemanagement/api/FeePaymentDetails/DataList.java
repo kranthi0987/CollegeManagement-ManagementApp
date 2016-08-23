@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.FeePaymentDetails;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("BankName")
     @Expose
     private Object bankName;
@@ -32,6 +46,14 @@ public class DataList {
     @SerializedName("Sem")
     @Expose
     private String sem;
+
+    protected DataList(Parcel in) {
+        feeName = in.readString();
+        paymentDate = in.readString();
+        paymentModeWithDocNo = in.readString();
+        receipt = in.readString();
+        sem = in.readString();
+    }
 
     /**
      * 
@@ -177,4 +199,17 @@ public class DataList {
         this.sem = sem;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(feeName);
+        dest.writeString(paymentDate);
+        dest.writeString(paymentModeWithDocNo);
+        dest.writeString(receipt);
+        dest.writeString(sem);
+    }
 }

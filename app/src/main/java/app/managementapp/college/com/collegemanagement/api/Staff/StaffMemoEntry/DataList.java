@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffMemoEntry;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Action")
     @Expose
     private String action;
@@ -23,6 +37,14 @@ public class DataList {
     @SerializedName("ReportedBy")
     @Expose
     private String reportedBy;
+
+    protected DataList(Parcel in) {
+        action = in.readString();
+        activity = in.readString();
+        description = in.readString();
+        memoDate = in.readString();
+        reportedBy = in.readString();
+    }
 
     /**
      * 
@@ -114,4 +136,17 @@ public class DataList {
         this.reportedBy = reportedBy;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(action);
+        dest.writeString(activity);
+        dest.writeString(description);
+        dest.writeString(memoDate);
+        dest.writeString(reportedBy);
+    }
 }

@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffSeminars;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("CertificateName")
     @Expose
     private String certificateName;
@@ -32,6 +46,17 @@ public class DataList {
     @SerializedName("Type")
     @Expose
     private String type;
+
+    protected DataList(Parcel in) {
+        certificateName = in.readString();
+        certifiedDate = in.readString();
+        certifiedFrom = in.readString();
+        description = in.readString();
+        endDateTime = in.readString();
+        name = in.readString();
+        startDateTime = in.readString();
+        type = in.readString();
+    }
 
     /**
      * 
@@ -177,4 +202,20 @@ public class DataList {
         this.type = type;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(certificateName);
+        dest.writeString(certifiedDate);
+        dest.writeString(certifiedFrom);
+        dest.writeString(description);
+        dest.writeString(endDateTime);
+        dest.writeString(name);
+        dest.writeString(startDateTime);
+        dest.writeString(type);
+    }
 }

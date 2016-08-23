@@ -1,15 +1,29 @@
 
 package app.managementapp.college.com.collegemanagement.api.AdmissionDetails;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class AdmissionDetailsResponse {
 
+public class AdmissionDetailsResponse implements Parcelable {
+
+    public static final Creator<AdmissionDetailsResponse> CREATOR = new Creator<AdmissionDetailsResponse>() {
+        @Override
+        public AdmissionDetailsResponse createFromParcel(Parcel in) {
+            return new AdmissionDetailsResponse(in);
+        }
+
+        @Override
+        public AdmissionDetailsResponse[] newArray(int size) {
+            return new AdmissionDetailsResponse[size];
+        }
+    };
     @SerializedName("DataList")
     @Expose
     private List<DataList> dataList = new ArrayList<DataList>();
@@ -22,6 +36,10 @@ public class AdmissionDetailsResponse {
     @SerializedName("ServiceResult")
     @Expose
     private Integer serviceResult;
+
+    protected AdmissionDetailsResponse(Parcel in) {
+        extendedToken = in.readString();
+    }
 
     /**
      * 
@@ -95,4 +113,13 @@ public class AdmissionDetailsResponse {
         this.serviceResult = serviceResult;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(extendedToken);
+    }
 }

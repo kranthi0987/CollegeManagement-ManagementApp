@@ -1,15 +1,29 @@
 
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffLeavesApplied;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class DataList {
 
+public class DataList implements Parcelable {
+
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("AvailableLeaves")
     @Expose
     private Integer availableLeaves;
@@ -67,6 +81,36 @@ public class DataList {
     @SerializedName("Reason")
     @Expose
     private String reason;
+
+    protected DataList(Parcel in) {
+        leaveName = in.readString();
+        shortName = in.readString();
+        alternateStaffStatusDetails = in.createTypedArrayList(AlternateStaffStatusDetail.CREATOR);
+        comment = in.readString();
+        leaveAppliedDate = in.readString();
+        leaveDateFrom = in.readString();
+        leaveDateTo = in.readString();
+        leaveRequestSentTo = in.readString();
+        reason = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(leaveName);
+        dest.writeString(shortName);
+        dest.writeTypedList(alternateStaffStatusDetails);
+        dest.writeString(comment);
+        dest.writeString(leaveAppliedDate);
+        dest.writeString(leaveDateFrom);
+        dest.writeString(leaveDateTo);
+        dest.writeString(leaveRequestSentTo);
+        dest.writeString(reason);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * 

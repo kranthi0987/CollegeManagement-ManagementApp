@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.StudentPersonalDetails;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class CollegeAddress {
+public class CollegeAddress implements Parcelable {
 
+    public static final Creator<CollegeAddress> CREATOR = new Creator<CollegeAddress>() {
+        @Override
+        public CollegeAddress createFromParcel(Parcel in) {
+            return new CollegeAddress(in);
+        }
+
+        @Override
+        public CollegeAddress[] newArray(int size) {
+            return new CollegeAddress[size];
+        }
+    };
     @SerializedName("Address")
     @Expose
     private Object address;
@@ -29,6 +43,9 @@ public class CollegeAddress {
     @SerializedName("State")
     @Expose
     private Object state;
+
+    protected CollegeAddress(Parcel in) {
+    }
 
     /**
      * 
@@ -156,4 +173,12 @@ public class CollegeAddress {
         this.state = state;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+    }
 }

@@ -1,11 +1,25 @@
 
 package app.managementapp.college.com.collegemanagement.api.Profiles.University;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class Address {
+public class Address implements Parcelable {
 
+    public static final Creator<Address> CREATOR = new Creator<Address>() {
+        @Override
+        public Address createFromParcel(Parcel in) {
+            return new Address(in);
+        }
+
+        @Override
+        public Address[] newArray(int size) {
+            return new Address[size];
+        }
+    };
     private String address;
     private String addressType;
     private String city;
@@ -14,6 +28,16 @@ public class Address {
     private String phone;
     private String state;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected Address(Parcel in) {
+        address = in.readString();
+        addressType = in.readString();
+        city = in.readString();
+        country = in.readString();
+        mobile = in.readString();
+        phone = in.readString();
+        state = in.readString();
+    }
 
     /**
      * 
@@ -149,4 +173,19 @@ public class Address {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(address);
+        dest.writeString(addressType);
+        dest.writeString(city);
+        dest.writeString(country);
+        dest.writeString(mobile);
+        dest.writeString(phone);
+        dest.writeString(state);
+    }
 }

@@ -1,15 +1,29 @@
 
 package app.managementapp.college.com.collegemanagement.api.StudentPersonalDetails;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class StudentPersonalDetailsResponse {
 
+public class StudentPersonalDetailsResponse implements Parcelable {
+
+    public static final Creator<StudentPersonalDetailsResponse> CREATOR = new Creator<StudentPersonalDetailsResponse>() {
+        @Override
+        public StudentPersonalDetailsResponse createFromParcel(Parcel in) {
+            return new StudentPersonalDetailsResponse(in);
+        }
+
+        @Override
+        public StudentPersonalDetailsResponse[] newArray(int size) {
+            return new StudentPersonalDetailsResponse[size];
+        }
+    };
     @SerializedName("DataList")
     @Expose
     private List<DataList> dataList = new ArrayList<DataList>();
@@ -22,6 +36,11 @@ public class StudentPersonalDetailsResponse {
     @SerializedName("ServiceResult")
     @Expose
     private Integer serviceResult;
+
+    protected StudentPersonalDetailsResponse(Parcel in) {
+        dataList = in.createTypedArrayList(DataList.CREATOR);
+        extendedToken = in.readString();
+    }
 
     /**
      * 
@@ -95,4 +114,14 @@ public class StudentPersonalDetailsResponse {
         this.serviceResult = serviceResult;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(dataList);
+        dest.writeString(extendedToken);
+    }
 }

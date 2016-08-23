@@ -1,18 +1,46 @@
 
 package app.managementapp.college.com.collegemanagement.api.Profiles.University;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UniversityProfileResponse {
+public class UniversityProfileResponse implements Parcelable {
 
+    public static final Creator<UniversityProfileResponse> CREATOR = new Creator<UniversityProfileResponse>() {
+        @Override
+        public UniversityProfileResponse createFromParcel(Parcel in) {
+            return new UniversityProfileResponse(in);
+        }
+
+        @Override
+        public UniversityProfileResponse[] newArray(int size) {
+            return new UniversityProfileResponse[size];
+        }
+    };
     private List<DataList> dataList = new ArrayList<DataList>();
     private Object errorMessage;
     private String extendedToken;
     private Integer serviceResult;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected UniversityProfileResponse(Parcel in) {
+        extendedToken = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(extendedToken);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * 

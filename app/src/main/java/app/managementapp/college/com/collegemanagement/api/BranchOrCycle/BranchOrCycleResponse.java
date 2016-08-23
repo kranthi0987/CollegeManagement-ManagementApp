@@ -1,15 +1,29 @@
 
 package app.managementapp.college.com.collegemanagement.api.BranchOrCycle;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class BranchOrCycleResponse {
 
+public class BranchOrCycleResponse implements Parcelable {
+
+    public static final Creator<BranchOrCycleResponse> CREATOR = new Creator<BranchOrCycleResponse>() {
+        @Override
+        public BranchOrCycleResponse createFromParcel(Parcel in) {
+            return new BranchOrCycleResponse(in);
+        }
+
+        @Override
+        public BranchOrCycleResponse[] newArray(int size) {
+            return new BranchOrCycleResponse[size];
+        }
+    };
     @SerializedName("DataList")
     @Expose
     private List<DataList> dataList = new ArrayList<DataList>();
@@ -22,6 +36,10 @@ public class BranchOrCycleResponse {
     @SerializedName("ServiceResult")
     @Expose
     private Integer serviceResult;
+
+    protected BranchOrCycleResponse(Parcel in) {
+        extendedToken = in.readString();
+    }
 
     /**
      * 
@@ -95,4 +113,13 @@ public class BranchOrCycleResponse {
         this.serviceResult = serviceResult;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(extendedToken);
+    }
 }

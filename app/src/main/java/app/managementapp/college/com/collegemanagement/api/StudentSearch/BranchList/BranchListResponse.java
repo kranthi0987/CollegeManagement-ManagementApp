@@ -1,18 +1,36 @@
 
 package app.managementapp.college.com.collegemanagement.api.StudentSearch.BranchList;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BranchListResponse {
+public class BranchListResponse implements Parcelable {
 
+    public static final Creator<BranchListResponse> CREATOR = new Creator<BranchListResponse>() {
+        @Override
+        public BranchListResponse createFromParcel(Parcel in) {
+            return new BranchListResponse(in);
+        }
+
+        @Override
+        public BranchListResponse[] newArray(int size) {
+            return new BranchListResponse[size];
+        }
+    };
     private List<DataList> dataList = new ArrayList<DataList>();
     private Object errorMessage;
     private String extendedToken;
     private Integer serviceResult;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected BranchListResponse(Parcel in) {
+        extendedToken = in.readString();
+    }
 
     /**
      * 
@@ -94,4 +112,13 @@ public class BranchListResponse {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(extendedToken);
+    }
 }

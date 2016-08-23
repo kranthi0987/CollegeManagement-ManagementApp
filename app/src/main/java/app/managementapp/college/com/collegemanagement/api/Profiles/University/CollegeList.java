@@ -1,13 +1,27 @@
 
 package app.managementapp.college.com.collegemanagement.api.Profiles.University;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CollegeList {
+public class CollegeList implements Parcelable {
 
+    public static final Creator<CollegeList> CREATOR = new Creator<CollegeList>() {
+        @Override
+        public CollegeList createFromParcel(Parcel in) {
+            return new CollegeList(in);
+        }
+
+        @Override
+        public CollegeList[] newArray(int size) {
+            return new CollegeList[size];
+        }
+    };
     private Address address;
     private String base64Image;
     private String universityName;
@@ -19,6 +33,16 @@ public class CollegeList {
     private String fax;
     private String webSite;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected CollegeList(Parcel in) {
+        base64Image = in.readString();
+        universityName = in.readString();
+        universityShortName = in.readString();
+        collegeName = in.readString();
+        email = in.readString();
+        fax = in.readString();
+        webSite = in.readString();
+    }
 
     /**
      * 
@@ -208,4 +232,19 @@ public class CollegeList {
         this.additionalProperties.put(name, value);
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(base64Image);
+        dest.writeString(universityName);
+        dest.writeString(universityShortName);
+        dest.writeString(collegeName);
+        dest.writeString(email);
+        dest.writeString(fax);
+        dest.writeString(webSite);
+    }
 }

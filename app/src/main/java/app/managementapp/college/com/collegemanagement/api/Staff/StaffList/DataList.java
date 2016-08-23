@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffList;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Addressal")
     @Expose
     private Object addressal;
@@ -68,6 +82,42 @@ public class DataList {
     @SerializedName("Photo")
     @Expose
     private Object photo;
+
+    protected DataList(Parcel in) {
+        code = in.readString();
+        dateOfBirth = in.readString();
+        firstName = in.readString();
+        fullName = in.readString();
+        lastName = in.readString();
+        mGUID = in.readString();
+        middleName = in.readString();
+        dOJ = in.readString();
+        department = in.readString();
+        designation = in.readString();
+        email = in.readString();
+        phone = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(code);
+        dest.writeString(dateOfBirth);
+        dest.writeString(firstName);
+        dest.writeString(fullName);
+        dest.writeString(lastName);
+        dest.writeString(mGUID);
+        dest.writeString(middleName);
+        dest.writeString(dOJ);
+        dest.writeString(department);
+        dest.writeString(designation);
+        dest.writeString(email);
+        dest.writeString(phone);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
     /**
      * 

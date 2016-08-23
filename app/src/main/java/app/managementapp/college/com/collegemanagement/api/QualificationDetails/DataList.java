@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.QualificationDetails;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class DataList {
+public class DataList implements Parcelable {
 
+    public static final Creator<DataList> CREATOR = new Creator<DataList>() {
+        @Override
+        public DataList createFromParcel(Parcel in) {
+            return new DataList(in);
+        }
+
+        @Override
+        public DataList[] newArray(int size) {
+            return new DataList[size];
+        }
+    };
     @SerializedName("Board")
     @Expose
     private String board;
@@ -29,6 +43,13 @@ public class DataList {
     @SerializedName("USN")
     @Expose
     private String uSN;
+
+    protected DataList(Parcel in) {
+        board = in.readString();
+        college = in.readString();
+        qualifyingCourse = in.readString();
+        uSN = in.readString();
+    }
 
     /**
      * 
@@ -156,4 +177,16 @@ public class DataList {
         this.uSN = uSN;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(board);
+        dest.writeString(college);
+        dest.writeString(qualifyingCourse);
+        dest.writeString(uSN);
+    }
 }

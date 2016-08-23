@@ -2,12 +2,26 @@
 package app.managementapp.college.com.collegemanagement.api.Staff.StaffLeavesApplied;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class AlternateStaffStatusDetail {
+public class AlternateStaffStatusDetail implements Parcelable {
 
+    public static final Creator<AlternateStaffStatusDetail> CREATOR = new Creator<AlternateStaffStatusDetail>() {
+        @Override
+        public AlternateStaffStatusDetail createFromParcel(Parcel in) {
+            return new AlternateStaffStatusDetail(in);
+        }
+
+        @Override
+        public AlternateStaffStatusDetail[] newArray(int size) {
+            return new AlternateStaffStatusDetail[size];
+        }
+    };
     @SerializedName("AlternateStaffName")
     @Expose
     private Object alternateStaffName;
@@ -26,6 +40,11 @@ public class AlternateStaffStatusDetail {
     @SerializedName("Status")
     @Expose
     private Integer status;
+
+    protected AlternateStaffStatusDetail(Parcel in) {
+        comment = in.readString();
+        gUID = in.readString();
+    }
 
     /**
      * 
@@ -135,4 +154,14 @@ public class AlternateStaffStatusDetail {
         this.status = status;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(comment);
+        dest.writeString(gUID);
+    }
 }
