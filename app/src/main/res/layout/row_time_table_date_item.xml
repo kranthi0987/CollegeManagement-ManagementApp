@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/dateScrollItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/weekDayText"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="17dp"
+        android:textColor="@color/grey_hard"
+        android:text="Mon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/dateValueContainer"
+        android:layout_width="50dp"
+        android:layout_height="50dp">
+        <ImageButton
+            android:id="@+id/highlight"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/circle_date"/>
+        <TextView
+            android:id="@+id/dayText"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:paddingTop="11dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:textColor="@color/cardview_dark_background"
+            android:layout_marginLeft="18dp"
+            android:text="2"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/monthText"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="17dp"
+        android:textColor="@color/grey_hard"
+        android:text="Jun"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

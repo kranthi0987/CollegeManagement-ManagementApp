@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="5dp"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_alignParentLeft="true"
+    android:layout_height="wrap_content">
+    <ImageView android:src="@drawable/back_button"
+        android:padding="10dp"
+        android:layout_gravity="right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:id="@+id/backTimeTable"
+        />
+    <TextView android:id="@+id/title" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Table"
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        />
+</LinearLayout>
+
+
+    <ImageView android:src="@drawable/ic_calander_white"
+        android:padding="10dp"
+        android:layout_gravity="right"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/filter" />
+</RelativeLayout>

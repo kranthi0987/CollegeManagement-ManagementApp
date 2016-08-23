@@ -1,0 +1,11 @@
+<resources>
+    <style name="CustomWindowTitleBarBG">
+        <item name="android:background">@color/colorButton</item>
+    </style>
+
+    <style name="MyTheme" parent="android:Theme">
+        <item name="android:windowTitleSize">55dip</item>
+        <item name="android:windowTitleBackgroundStyle">           @style/CustomWindowTitleBarBG</item>
+        <item name="android:datePickerStyle">@android:style/Widget.DeviceDefault.DatePicker</item>
+    </style>
+</resources>

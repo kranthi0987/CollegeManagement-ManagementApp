@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#179bd7</color>
+    <color name="colorPrimaryDark">#253b80</color>
+    <color name="colorAccent">#253b80</color>
+    <color name="colorButton">#179bd7</color>
+    <color name="colorLightButton">#179bd7</color>
+    <color name="calenderCurrentDay">#6ECDF3</color>
+
+
+    <color name="grey_hard">#96989A</color>
+    <color name="grey_medium">#D3D3D3</color>
+    <color name="grey_soft">#F5F5F5</color>
+    <color name="grey_back">#D3D3D3</color>
+
+    <color name="grey_bg">#EBEFF0</color>
+    <color name="grey_text">#222D31</color>
+    <color name="white">#FFF</color>
+</resources>

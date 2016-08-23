@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_group_collage"
+            android:title="Quick Link 1" />
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@drawable/ic_group_collage"
+            android:title="Quick Link 2"/>
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@drawable/ic_group_collage"
+            android:title="Quick Link 3" />
+        <item
+            android:id="@+id/nav_discussion"
+            android:icon="@drawable/ic_group_collage"
+            android:title="Quick Link 4" />
+    </group>
+
+    <item android:title="Sub items">
+        <menu>
+            <item
+                android:icon="@drawable/ic_group_collage"
+                android:title="Sub item 1" />
+            <item
+                android:icon="@drawable/ic_group_collage"
+                android:title="Sub item 2" />
+        </menu>
+    </item>
+
+</menu>

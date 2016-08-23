@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+
+            android:background="@color/colorPrimary"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_height="wrap_content">
+
+                <ImageView android:src="@drawable/back_button"
+                    android:padding="10dp"
+                    android:layout_gravity="right"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:clickable="true"
+                    android:id="@+id/backTimeTable"
+                    />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <TextView android:id="@+id/title" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Marks for "
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:paddingTop="10dp"
+                        />
+                    <TextView android:id="@+id/dateTitle" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:textSize="18dp"
+                        android:textColor="@color/white"
+                        android:paddingTop="10dp"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_weight=".8"
+                android:background="@color/grey_bg"
+                android:id="@+id/studentCont"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical" />
+            <!--<LinearLayout
+                android:orientation="vertical"
+                android:background="@color/colorPrimary"
+                android:id="@+id/studentCont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+        -->
+            <LinearLayout
+                android:weightSum="1"
+                android:orientation="horizontal"
+                android:layout_weight=".2"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <Button
+                    android:layout_marginRight="1dp"
+                    android:layout_weight=".5"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@color/colorButton"
+                    android:id="@+id/saveAttandance"
+                    android:text="Save"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+                <Button
+                    android:layout_marginLeft="1dp"
+                    android:layout_weight=".5"
+                    android:textAlignment="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@color/colorButton"
+                    android:id="@+id/submitAttandance"
+                    android:text="Submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:alpha="0.4"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+    </FrameLayout>
+</android.support.v4.widget.DrawerLayout>
