@@ -1,5 +1,5 @@
 
-package app.managementapp.college.com.collegemanagement.api.app.managementapp.college.com.collegemanagement.api.;
+package app.managementapp.college.com.collegemanagement.api.CourseFeedback;
 
 
 import com.google.gson.annotations.Expose;

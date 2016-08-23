@@ -1,5 +1,4 @@
-
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
+package app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -7,18 +6,7 @@ import android.os.Parcelable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DataList implements Parcelable{
-
-    private Address address;
-    private String base64Image;
-    private String universityName;
-    private Object universityShortName;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    protected DataList(Parcel in) {
-        base64Image = in.readString();
-        universityName = in.readString();
-    }
+public class DataList implements Parcelable {
 
     public static final Creator<DataList> CREATOR = new Creator<DataList>() {
         @Override
@@ -31,6 +19,16 @@ public class DataList implements Parcelable{
             return new DataList[size];
         }
     };
+    private Address address;
+    private String base64Image;
+    private String universityName;
+    private Object universityShortName;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected DataList(Parcel in) {
+        base64Image = in.readString();
+        universityName = in.readString();
+    }
 
     /**
      * 

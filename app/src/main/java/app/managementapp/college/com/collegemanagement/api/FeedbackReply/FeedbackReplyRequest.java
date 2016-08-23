@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.FeedbackReply;
+package app.managementapp.college.com.collegemanagement.api.FeedbackReply;
 
 import java.util.HashMap;
 import java.util.Map;

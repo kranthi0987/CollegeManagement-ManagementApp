@@ -1,5 +1,5 @@
 
-package app.managementapp.college.app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
+package app.managementapp.college.com.collegemanagement.api.Authentication.FirstAuth;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -10,16 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 public class FirstLoginResponse implements Parcelable{
-
-    private List<DataList> dataList = new ArrayList<DataList>();
-    private Object errorMessage;
-    private String extendedToken;
-    private Integer serviceResult;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-    protected FirstLoginResponse(Parcel in) {
-        extendedToken = in.readString();
-    }
 
     public static final Creator<FirstLoginResponse> CREATOR = new Creator<FirstLoginResponse>() {
         @Override
@@ -32,6 +22,15 @@ public class FirstLoginResponse implements Parcelable{
             return new FirstLoginResponse[size];
         }
     };
+    private List<DataList> dataList = new ArrayList<DataList>();
+    private Object errorMessage;
+    private String extendedToken;
+    private Integer serviceResult;
+    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    protected FirstLoginResponse(Parcel in) {
+        extendedToken = in.readString();
+    }
 
     @Override
     public String toString() {

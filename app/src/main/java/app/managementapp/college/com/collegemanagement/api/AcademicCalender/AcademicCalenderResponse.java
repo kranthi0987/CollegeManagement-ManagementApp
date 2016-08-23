@@ -1,11 +1,11 @@
 
-package app.managementapp.college.com.collegemanagement.api..AcademicCalender;
-
-import java.util.ArrayList;
-import java.util.List;
+package app.managementapp.college.com.collegemanagement.api.AcademicCalender;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class AcademicCalenderResponse {
