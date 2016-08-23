@@ -24,9 +24,14 @@ public class FeedbackReplyRequest implements Parcelable {
     private String reply;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    protected FeedbackReplyRequest(Parcel in) {
+    public FeedbackReplyRequest() {
+
+    }
+
+    public FeedbackReplyRequest(Parcel in) {
         reply = in.readString();
     }
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
