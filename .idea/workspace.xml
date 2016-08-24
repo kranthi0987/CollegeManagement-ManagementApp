@@ -9,7 +9,9 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4427891a-a715-44c0-ae70-a85cac2b5843" name="Default" comment="college management generator update 3" />
+    <list default="true" id="4427891a-a715-44c0-ae70-a85cac2b5843" name="Default" comment="college management generator update 3">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="CollegeManagement - Management.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
