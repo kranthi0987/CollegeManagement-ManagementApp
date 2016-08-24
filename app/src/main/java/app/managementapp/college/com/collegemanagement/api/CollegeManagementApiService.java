@@ -34,5 +34,5 @@ public interface CollegeManagementApiService {
     @GET("ManagementService.svc/GetAdmissionDetails")
     Call<AdmissionDetailsResponse> getAdmissionDetails(@Header("Token") String token);
 
-    
+
 }
