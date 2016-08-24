@@ -4,6 +4,8 @@ package app.managementapp.college.com.collegemanagement.api;
 import app.managementapp.college.com.collegemanagement.api.AcademicCalender.AcademicCalenderResponse;
 import app.managementapp.college.com.collegemanagement.api.AdmissionDetails.AdmissionDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.AttendanceDetails.AttendanceDetailsResponse;
+import app.managementapp.college.com.collegemanagement.api.BranchOrCycle.BranchOrCycleResponse;
+import app.managementapp.college.com.collegemanagement.api.CollegeProfile.CollegeProfileResponse;
 import app.managementapp.college.com.collegemanagement.api.FeedbackList.FeedbackListResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -37,5 +39,13 @@ public interface CollegeManagementApiService {
 
     @GET("ManagementService.svc/GetAttendanceDetails")
     Call<AttendanceDetailsResponse> getAttendanceDetails(@Header("Token") String token);
+
+    @GET("ManagementService.svc/GetBranchOrCycle")
+    Call<BranchOrCycleResponse> getBranchOrCycle(@Header("Token") String token, @Query("CourseID") Integer courseid, @Query("sem") Integer sem);
+
+    @GET("ManagementService.svc/GetCollegeProfile")
+    Call<CollegeProfileResponse> getCollegeProfile(@Header("Token") String token, @Query("ID") Integer id);
+
+    @GET("ManagementService.svc/GetCousreFeedback")
 
 }
