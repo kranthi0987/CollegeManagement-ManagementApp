@@ -28,6 +28,25 @@ public class ManagementHome extends AppCompatActivity
 
     RecyclerView recyclerView;
 
+    public static List<app.managementapp.college.com.collegemanagement.model.MenuItem> getMenuData(Context ctx) {
+        List<app.managementapp.college.com.collegemanagement.model.MenuItem> items = new ArrayList<>();
+        String s_name[] = ctx.getResources().getStringArray(R.array.menu_name);
+        String s_date[] = ctx.getResources().getStringArray(R.array.groups_date);
+        TypedArray drw_arr = ctx.getResources().obtainTypedArray(R.array.menu_photos);
+
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(0, s_date[0], s_name[0], "", drw_arr.getResourceId(0, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(1, s_date[1], s_name[1], "", drw_arr.getResourceId(1, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(2, s_date[2], s_name[2], "", drw_arr.getResourceId(2, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[3], "", drw_arr.getResourceId(3, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[4], "", drw_arr.getResourceId(4, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[5], "", drw_arr.getResourceId(5, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[6], "", drw_arr.getResourceId(6, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[7], "", drw_arr.getResourceId(7, -1)));
+        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[8], "", drw_arr.getResourceId(7, -1)));
+
+        return items;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,25 +77,6 @@ public class ManagementHome extends AppCompatActivity
 
         MenuGridAdapter mAdapter = new MenuGridAdapter(this, getMenuData(this));
         recyclerView.setAdapter(mAdapter);
-    }
-
-
-    public static List<app.managementapp.college.com.collegemanagement.model.MenuItem> getMenuData(Context ctx)  {
-        List<app.managementapp.college.com.collegemanagement.model.MenuItem> items = new ArrayList<>();
-        String s_name[] = ctx.getResources().getStringArray(R.array.menu_name);
-        String s_date[] = ctx.getResources().getStringArray(R.array.groups_date);
-        TypedArray drw_arr = ctx.getResources().obtainTypedArray(R.array.menu_photos);
-
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(0, s_date[0], s_name[0], "", drw_arr.getResourceId(0, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(1, s_date[1], s_name[1], "", drw_arr.getResourceId(1, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(2, s_date[2], s_name[2], "", drw_arr.getResourceId(2, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[3], "", drw_arr.getResourceId(3, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[4], "", drw_arr.getResourceId(4, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[5], "", drw_arr.getResourceId(5, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[6], "", drw_arr.getResourceId(6, -1)));
-        items.add(new app.managementapp.college.com.collegemanagement.model.MenuItem(3, s_date[3], s_name[7], "", drw_arr.getResourceId(7, -1)));
-
-        return items;
     }
 
     public void clicked(String clickOn){

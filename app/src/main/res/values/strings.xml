@@ -38,6 +38,7 @@
         <item>Results</item>
         <item>University Profile</item>
         <item>Feedback</item>
+        <item>Academic Calendar</item>
     </string-array>
 
     <integer-array name="menu_photos">
@@ -49,6 +50,7 @@
         <item>@drawable/results</item>
         <item>@drawable/university</item>
         <item>@drawable/menu_icon_feedback</item>
+        <item>@drawable/menu_icon_academiccalendar</item>
     </integer-array>
 
     <string-array name="groups_date">
@@ -72,5 +74,6 @@
     <string name="title_activity_apply_leave_alternative_selection">ApplyLeaveAlternativeSelection
     </string>
     <string name="title_activity_management_home">ManagementHome</string>
+    <string name="title_activity_academic_calendar">Academic Calendar</string>
 
 </resources>

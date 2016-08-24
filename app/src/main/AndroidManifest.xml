@@ -89,6 +89,11 @@
             android:name=".management.ManagementHome"
             android:label="@string/title_activity_management_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AcademicCalendar"
+            android:label="@string/title_activity_management_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
     </application>
 
 </manifest>
