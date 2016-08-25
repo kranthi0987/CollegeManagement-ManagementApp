@@ -6,18 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
-import app.managementapp.college.com.collegemanagement.dummy.DummyContent.DummyItem;
+import app.managementapp.college.com.collegemanagement.FeedbackFragment.OnListFragmentInteractionListener;
+import app.managementapp.college.com.collegemanagement.api.FeedbackList.DataList;
 
+public class MyAcademicCalendarRecyclerViewAdapter extends RecyclerView.Adapter<FeedbackRecyclerViewAdapter.ViewHolder> {
 
-public class MyAcademicCalendarRecyclerViewAdapter extends RecyclerView.Adapter<MyAcademicCalendarRecyclerViewAdapter.ViewHolder> {
+    private final OnListFragmentInteractionListener mListener;
+    List<DataList> mValues = Collections.emptyList();
 
-    private final List<DummyItem> mValues;
-
-    public MyAcademicCalendarRecyclerViewAdapter(List<DummyItem> items,) {
+    public MyAcademicCalendarRecyclerViewAdapter(List<DataList> items, OnListFragmentInteractionListener listener) {
         mValues = items;
-
+        mListener = listener;
     }
 
     @Override
@@ -28,36 +30,37 @@ public class MyAcademicCalendarRecyclerViewAdapter extends RecyclerView.Adapter<
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+    public void onBindViewHolder(FeedbackRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
+
+
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        try {
+            return mValues.size();
+        } catch (NullPointerException e) {
+            return 0;
+        }
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView mStatus;
+        public DataList mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.message_title);
+            mContentView = (TextView) view.findViewById(R.id.message_content);
+            mStatus = (TextView) view.findViewById(R.id.message_status);
         }
+
 
         @Override
         public String toString() {
