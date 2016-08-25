@@ -3,28 +3,14 @@ package app.managementapp.college.com.collegemanagement;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import app.managementapp.college.com.collegemanagement.api.AcademicCalender.AcademicCalenderResponse;
-import app.managementapp.college.com.collegemanagement.api.Authentication.RegularAuth.RegularLoginResponse;
 import app.managementapp.college.com.collegemanagement.api.CollegeManagementApiService;
 import app.managementapp.college.com.collegemanagement.api.ServiceGenerator;
 import app.managementapp.college.com.collegemanagement.dummy.DummyContent.DummyItem;
-import app.managementapp.college.com.collegemanagement.util.CredentialManager;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
-/**
- * A fragment representing a list of Items.
- * <p/>
- * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
- * interface.
- */
 public class AcademicCalendar extends Fragment {
 
     // TODO: Customize parameter argument names
@@ -58,43 +44,6 @@ public class AcademicCalendar extends Fragment {
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
-        CredentialManager credentialManager = new CredentialManager(getContext());
-        Call<RegularLoginResponse> firstcall = collegeManagementApiService.doRegularLogin(credentialManager.getUserName(), credentialManager.getPassword());
-        firstcall.enqueue(new Callback<RegularLoginResponse>() {
-
-            @Override
-            public void onResponse(Call<RegularLoginResponse> call, Response<RegularLoginResponse> response) {
-                Log.i("token", response.body().toString());
-
-                final Call<AcademicCalenderResponse> sendReplyCall = collegeManagementApiService.getAcademicCalendar(response.body().getToken());
-                sendReplyCall.enqueue(new Callback<AcademicCalenderResponse>() {
-                    @Override
-                    public void onResponse(Call<AcademicCalenderResponse> call, Response<AcademicCalenderResponse> response) {
-                        try {
-                            Toast.makeText(getContext(), "calendar recieved", Toast.LENGTH_SHORT).show();
-                        } catch (NullPointerException e) {
-                            Toast.makeText(getContext(), "No Data from the Server", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<AcademicCalenderResponse> call, Throwable t) {
-                        Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-
-                    }
-
-                });
-
-
-            }
-
-            @Override
-            public void onFailure(Call<RegularLoginResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.toString(), Toast.LENGTH_SHORT).show();
-            }
-
-
-        });
 
 
     }
