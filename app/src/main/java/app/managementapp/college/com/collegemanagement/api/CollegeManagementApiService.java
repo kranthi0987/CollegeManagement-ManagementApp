@@ -19,6 +19,9 @@ import app.managementapp.college.com.collegemanagement.api.Staff.StaffAttendance
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffFeedback.StaffFeedbackResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffLeavesApplied.StaffLeavesAppliedResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffList.StaffListResponse;
+import app.managementapp.college.com.collegemanagement.api.Staff.StaffMemoEntry.StaffMemoEntryResponse;
+import app.managementapp.college.com.collegemanagement.api.Staff.StaffMovementRegister.StaffMovementRegisterResponse;
+import app.managementapp.college.com.collegemanagement.api.Staff.StaffSeminars.StaffSeminarsResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -94,5 +97,14 @@ public interface CollegeManagementApiService {
     @GET("ManagementService.svc/GetStaffList")
     Call<StaffListResponse> getStaffList(@Header("Token") String token, @Query("StaffName") String staffname, @Query("StaffCode") String staffcode);
 
-    
+    @GET("ManagementService.svc/GetStaffMemoEntry")
+    Call<StaffMemoEntryResponse> getStaffMemoEntry(@Header("Token") String token, @Query("StaffID") String staffid);
+
+    @GET("ManagementService.svc/GetStaffMovementRegister")
+    Call<StaffMovementRegisterResponse> getStaffMovementRegister(@Header("Token") String token, @Query("StaffID") String staffid, @Query("FromDate") String fromdate, @Query("ToDate") String todate);
+
+    @GET("ManagementService.svc/GetStaffSeminar")
+    Call<StaffSeminarsResponse> getStaffSeminar(@Header("Token") String token, @Query("StaffID") String staffid);
+
+    @GET("")
 }
