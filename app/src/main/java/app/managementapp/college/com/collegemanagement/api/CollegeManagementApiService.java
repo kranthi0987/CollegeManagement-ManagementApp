@@ -1,6 +1,8 @@
 package app.managementapp.college.com.collegemanagement.api;
 
 
+import android.support.annotation.IntegerRes;
+
 import app.managementapp.college.com.collegemanagement.api.AcademicCalender.AcademicCalenderResponse;
 import app.managementapp.college.com.collegemanagement.api.AdmissionDetails.AdmissionDetailsResponse;
 import app.managementapp.college.com.collegemanagement.api.AttendanceDetails.AttendanceDetailsResponse;
@@ -22,6 +24,9 @@ import app.managementapp.college.com.collegemanagement.api.Staff.StaffList.Staff
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffMemoEntry.StaffMemoEntryResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffMovementRegister.StaffMovementRegisterResponse;
 import app.managementapp.college.com.collegemanagement.api.Staff.StaffSeminars.StaffSeminarsResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentActivities.StudentActivitiesResponse;
+import app.managementapp.college.com.collegemanagement.api.StudentPersonalDetails.StudentPersonalDetailsResponse;
+import app.managementapp.college.com.collegemanagement.api.TimeTableSchedule.TimeTableScheduleResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -106,5 +111,12 @@ public interface CollegeManagementApiService {
     @GET("ManagementService.svc/GetStaffSeminar")
     Call<StaffSeminarsResponse> getStaffSeminar(@Header("Token") String token, @Query("StaffID") String staffid);
 
-    @GET("")
+    @GET("ManagementService.svc/GetStudentActivities")
+    Call<StudentActivitiesResponse> getStudentActivies(@Header("Token") String token, @Query("StudentID")Integer studentid);
+
+    @GET("ManagementService.svc/GetStudentPeronalDetails")
+    Call<StudentPersonalDetailsResponse> getStudentPersonalDetails(@Header("Token")String token, @Query("StudentID")Integer studentid);
+
+    @GET("ManagementService.svc/GetTimeTableSchedule")
+    Call<TimeTableScheduleResponse> getTimeTableSchedule(@Header("Token")String token, @Query("StaffID")String staffid);
 }
