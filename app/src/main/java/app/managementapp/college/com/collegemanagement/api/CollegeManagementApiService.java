@@ -47,10 +47,10 @@ public interface CollegeManagementApiService {
     Call<AcademicCalenderResponse> getAcademicCalendar(@Header("Token") String token);
 
     @GET("ManagementService.svc/GetAdmissionDetails")
-    Call<AdmissionDetailsResponse> getAdmissionDetails(@Header("Token") String token);
+    Call<AdmissionDetailsResponse> getAdmissionDetails(@Header("Token") String token, @Query("StudentID") Integer studentid);
 
     @GET("ManagementService.svc/GetAttendanceDetails")
-    Call<AttendanceDetailsResponse> getAttendanceDetails(@Header("Token") String token);
+    Call<AttendanceDetailsResponse> getAttendanceDetails(@Header("Token") String token, @Query("StudentID") Integer studentid);
 
     @GET("ManagementService.svc/GetBranchOrCycle")
     Call<BranchOrCycleResponse> getBranchOrCycle(@Header("Token") String token, @Query("CourseID") Integer courseid, @Query("sem") Integer sem);
@@ -93,4 +93,6 @@ public interface CollegeManagementApiService {
 
     @GET("ManagementService.svc/GetStaffList")
     Call<StaffListResponse> getStaffList(@Header("Token") String token, @Query("StaffName") String staffname, @Query("StaffCode") String staffcode);
+
+    
 }
